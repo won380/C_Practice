@@ -1,0 +1,53 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char org[100] = "Welcome to the Show."; //100칸 , 배열선언과 동시에 초기화
+	char dest[100], * s, * token, * delim = " ";//100칸 만들었음
+	int  n;
+
+	printf("Source string: org = \"%s\"\n", org);//문자열에 담긴 걸 출력
+
+	strcpy(dest, org);//스트링 카피 ,복사하겠다 
+	printf("strcpy(dest, org) => dest = \"%s\"\n", dest);
+
+	n = 7;
+	strncpy(dest, org, n);//일정 인덱스부터 복사,오리지널 n번째까지 복사해라, null문자를 안가져옴
+	dest[n] = '\0';//그래서 NULL문자를 넣어줌(널 =백슬라이스0)
+	printf("strncpy(dest, org, 7) => dest = \"%s\"\n", dest);
+
+	strcat(dest, org);
+	printf("strcat(dest, org) => dest = \"%s\"\n", dest);
+
+	n = strcmp(org, "Welcome to Show.");
+	printf("strcmp(org, \"Welcome to Show.\") => %d\n", n);
+	n = strcmp(org, "Welcome to the Show.");
+	printf("strcmp(org, \"Welcome to the Show.\") => %d\n", n);
+	//같으면 0,다르면 -1 또는1
+	n = strlen(org);//문자열의 길이를 반환
+	printf("strlen(org) => %d\n", n);//NULL문자를 포함하는가?
+
+	// GCC ++ 
+	// strrev(dest);
+	// printf("strrev(dest) => dest = \"%s\"\n", dest);
+
+	s = strchr(org, 'o');//a가있으면 반환해,a test 출력,포인터를 반환함
+	printf("s = strchr(org, 'o') => s = \"%s\"\n", s);
+	s = strrchr(org, 't');//반대로 찾음,is a test 출력,포임터 반환
+	printf("s = strrchr(org, 't') => s = \"%s\"\n", s);
+
+	s = strstr(org, "to");//문자열을 문자열 안에서 찾자,포인터 반환, is is a teat??
+	printf("s = strstr(org, \"to\") => s = \"%s\"\n", s);
+
+	printf("Use of strtok(org, \" .\") ==> \n\tTokens =");
+	token = strtok(org, " .");//문자열을 분리 
+	while (token) {
+		printf(" [%s]", token);
+		token = strtok(NULL, " .");
+	}
+	printf("\n\tAfter that, org to changed the \"%s\"\n", org);
+	printf("\tSee the lines of code.\n");
+}//헉 오류뜸
