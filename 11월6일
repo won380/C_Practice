@@ -1,0 +1,43 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_SIZE 100
+//문자열 위치를 잡고 문자열 삽입
+void strnins(char* s, char* t, int i) {//s를t의i번째에 삽입
+	char string[MAX_SIZE] = { 0 }, * temp = string;
+
+	if (!strlen(s))
+		strcpy(s, t);
+	else if (strlen(t)) {//복사하고자하는 대상이 있냐
+		strncpy(temp, s, i);//복사해서 temp에 넣음(s의i번째부터), NULL문자 없으니까 그거 조심하삼
+		strcat(temp, t);//temp뒤에 t를 붙여라
+		strcat(temp, (s + i));//i붙여서 NULL문자생김
+		printf("temp=> %s\n", temp);
+		strcpy(s, temp);//s에다가 temp를 넣어라.
+	}
+}
+
+void strnins_no_temp(char* s, char* t, int i)
+{   // 스트링 s의 i번째 위치에 스트링 t를 삽입
+
+	if (!strlen(s))
+		strcpy(s, t);
+	else if (strlen(t)) {
+		strcat(t, s + i);
+		strcpy(s + i, t);//s+i번째에 붙여라
+	}
+}
+
+
+void main() {
+	char s[MAX_SIZE] = "amobile";
+	char t[MAX_SIZE] = "uto";
+
+	printf("Before strnins() >> %s\n", s);
+	//strnins(s, t, 1);(temp쓰고 싶으면 이거 쓰시오.)
+	strnins_no_temp(s, t, 1);
+	printf("After strnins() >> %s\n", s);
+}
