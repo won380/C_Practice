@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+	char name[256];
+	printf("이름을 입력하시오:");
+	scanf_s("%s", name, sizeof(name));
+	
+
+	char id[256];
+	printf("id를 입력하시오:");
+	scanf_s("%s", id, sizeof(id));
+	
+
+	int age;
+	printf("나이를 입력하시오:");
+	scanf_s("%d", &age);
+	
+
+	char birth[256];
+	printf("생일을 입력하시오:");
+	scanf_s("%s", birth, sizeof(birth));
+	
+
+	int size;
+	printf("신발사이즈를 입력하시오:");
+	scanf_s("%d", &size);
+	
+
+
+	printf("\n\n--- 회원 정보 ---\n");
+	printf("이름      :%s\n", name);
+	printf("아이디    :%s\n", id);
+	printf("나이      :%d\n", age);
+	printf("생일      :%s\n", birth);
+	printf("신발 크기 :%d\n", size);
+
+	return 0;
+}
