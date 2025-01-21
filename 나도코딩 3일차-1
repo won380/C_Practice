@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+	char a[100];
+	char b[100]; //하나로 묶어 쓰기 가능
+	scanf_s("%s", a, sizeof(a));
+	scanf_s("%s", b, sizeof(b));
+	printf("%s\n%s", a, b);
+} //내가 만든거
+
+int main() {
+	char str1[256], str2[256];
+	printf("첫 번째 문자열을 입력하시오:");
+	scanf_s("%s", str1, sizeof(str1));
+	printf("두 번째 문자열을 입력하시오:");
+	scanf_s("%s", str2, sizeof(str2));
+	printf("첫 번째 문자열:%s\n", str1);
+	printf("두 번째 문자열:%s\n", str2);
+	return 0;
+
+} //책에서 알려준거
+
+//무엇을 입력해야하는지 알려주는 문자쓰기
